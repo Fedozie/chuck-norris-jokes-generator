@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
     <title>Chuck Norris Joke Generator</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body onload="loadingMsg()">
     <div class="container">
         <h2>Chuck Norris Jokes Generator</h2>
         <form>
             <div>
-                <label for="number">Number of Jokes</label>
+                <label for="number">Enter the number of Chuck Norris jokes you would want to see</label>
                 <input type="number" id="number">
             </div>
             <div>
@@ -22,7 +23,8 @@
 
     <div class="jokes"></div>
 
+    <footer></footer>
     <!-- <script src="app.js"></script> -->
-    <script src="app-async.js"></script>
+    <script src="./app-async.js"></script>
 </body>
 </html>

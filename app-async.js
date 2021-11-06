@@ -1,3 +1,10 @@
+let bodyTag = document.querySelector('body');
+
+//Onload Message
+const loadingMsg = () => {
+    alert('Enter a number to get that amount of random Chuck Norris Jokes, after that click on the refresh button to try out another number.')
+}
+
 //Display the list of jokes
 const renderJokes = (e) => {
     e.preventDefault();
@@ -5,7 +12,6 @@ const renderJokes = (e) => {
 
     const getJokes = async () => {
         let url = `http://api.icndb.com/jokes/random/${number}`;
-        // let url = 'https://api.icndb.com/jokes/random/'
         try{
             let response = await fetch(url);
             let data = response.json();
@@ -28,11 +34,22 @@ const renderJokes = (e) => {
         jokeHTML += jokeOutput;
         })
 
-        document.querySelector('.jokes').innerHTML = jokeHTML;
         
-        console.log(jokesArray)
-    }
+        let jokesList = document.querySelector('.jokes');
+        let title = document.createElement('h3');
+        title.className = 'jokes-title';
+        title.innerHTML = `A List of ${number} Chuck Norris Jokes`;
+        bodyTag.insertBefore(title, jokesList);
+        jokesList.innerHTML = jokeHTML;
 
+        let reloadBtn = document.createElement('button');
+        reloadBtn.innerHTML = 'Click to Reload';
+        reloadBtn.className = 'reload-btn';
+        bodyTag.insertBefore(reloadBtn, bodyTag.lastChild);
+        reloadBtn.addEventListener('click', () => {
+            location.reload();
+        })
+    }
 
     displayJokes();
 }
